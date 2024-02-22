@@ -39,7 +39,7 @@ app.get('/books',async(req,res)=>{
         res.send({message:err.message}).status(500)
     }
 })
-
+//Get the Books by Id
 app.get('/books/:id',async(req,res)=>{
 try{
     const {id}=req.params
@@ -50,7 +50,28 @@ catch(err){
     res.status(500).send({message:err.message})
 }
 })
+//Update or Edit the Books By put
 
+app.put('/books/:id',async(req,res)=>{
+    try{
+        if(!req.body.title||
+            !req.body.author||
+            !req.body.publishYear ){
+                return res.send({message:"send all required field"}).status(500)
+        }
+        const {id}=req.params;
+        const EditBook=await Bookmodel.findByIdAndUpdate(id,req.body)
+        if(!EditBook){
+            return res.send({message:"Book not found"}).status(500)
+
+        }
+        return res.send("Successfully Book Updated").status(200)
+
+    }
+    catch(err){
+        res.status(500).send({message:err.message})
+    }
+})
 
 mongoose.connect(MongoURL).then(()=>{
     console.log("MongoDB connected")
