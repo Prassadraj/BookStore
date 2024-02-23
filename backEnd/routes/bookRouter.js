@@ -26,7 +26,10 @@ router.post('/',async(req,res)=>{
 router.get('/',async(req,res)=>{
     try{
         const getBooks=await Bookmodel.find({})
-        return res.status(200).json(getBooks)
+        return res.status(200).json({
+            count:getBooks.length,
+            data:getBooks
+        })
     }
     catch(err){
         res.send({message:err.message}).status(500)
