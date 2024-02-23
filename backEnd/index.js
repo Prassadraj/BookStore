@@ -3,6 +3,7 @@ import { PORT,MongoURL} from "./config.js";
 import mongoose from 'mongoose'
 import { Bookmodel } from "./models/bookmodel.js";
 const app=express()
+//middleWare for getting data from body and to modify
 app.use(express.json())
 
 app.get('/',(req,res)=>{
@@ -72,6 +73,27 @@ app.put('/books/:id',async(req,res)=>{
         res.status(500).send({message:err.message})
     }
 })
+   //Delete the Books
+   app.delete('/books/:id',async(req,res)=>{
+    try{
+        if(!req.body.title||
+            !req.body.author||
+            !req.body.publishYear ){
+                return res.send({message:"send all required field"}).status(500)
+        }
+        const{id}=req.params
+        const deleteBook=await Bookmodel.findByIdAndDelete(id)
+        if(!deleteBook){
+            res.send("Book not Found").status(500)
+        }
+        return res.send("Book Deleted Successfully..").status(200)
+    }
+    catch(err){
+        console.log(err);
+        res.send({message:err.message}).status(500)
+
+    }
+   })
 
 mongoose.connect(MongoURL).then(()=>{
     console.log("MongoDB connected")
