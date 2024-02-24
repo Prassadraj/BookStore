@@ -29,7 +29,7 @@ console.log(books);
       <div className='flex justify-between items-center'>
         <h1 className='text-3xl my-5'>Book List</h1>
         <Link to={'/books/create'}>
-          <MdOutlineAddBox className='bg-green-300 text-4xl'/>
+          <MdOutlineAddBox title='Create' className='bg-green-300 text-4xl'/>
         </Link>
       </div>
       {spinner ? (
@@ -55,13 +55,13 @@ console.log(books);
                 <td>
                   <div className="flex justify-center gap-4">
                     <Link to={`/books/show/${book._id}`}>
-                      <BsInfoCircle className='text-green-500 text-2xl'/>
+                      <BsInfoCircle title='info' className='text-green-500 text-2xl'/>
                     </Link>
                     <Link  to={`/books/edit/${book._id}`}>
-                      <AiOutlineEdit className='text-yellow-500 text-2xl'/>
+                      <AiOutlineEdit title='Edit' className='text-yellow-500 text-2xl'/>
                     </Link>
                     <Link to={`/books/delete/${book._id}`}>
-                      <MdOutlineDelete className='text-red-500 text-2xl'/>
+                      <MdOutlineDelete title='delete' className='text-red-500 text-2xl'/>
                     </Link>
                   </div>
                 </td>
