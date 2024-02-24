@@ -3,7 +3,7 @@ import { PORT,MongoURL} from "./config.js";
 import mongoose from 'mongoose'
 import bookRouter from './routes/bookRouter.js'
 import cors from 'cors'
-import { Bookmodel } from "./models/bookmodel.js";
+// import { Bookmodel } from "./models/bookmodel.js";
 
 const app=express()
 //middleWare for getting data from body and to modify
