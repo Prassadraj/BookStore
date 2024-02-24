@@ -14,6 +14,7 @@ const Home = () => {
     setSpinner(true);
     axios.get('http://localhost:5555/books')
       .then((res) => {
+        setSpinner(true)
         setBooks(res.data.data);
         setSpinner(false);
       })
@@ -53,13 +54,13 @@ console.log(books);
                 <td className="border rounded-md text-center text-amber-700">{book.publishYear}</td>
                 <td>
                   <div className="flex justify-center gap-4">
-                    <Link to={`/book/show/${book._id}`}>
+                    <Link to={`/books/show/${book._id}`}>
                       <BsInfoCircle className='text-green-500 text-2xl'/>
                     </Link>
-                    <Link to={`/book/edit/${book._id}`}>
+                    <Link  to={`/books/edit/${book._id}`}>
                       <AiOutlineEdit className='text-yellow-500 text-2xl'/>
                     </Link>
-                    <Link to={`/book/delete/${book._id}`}>
+                    <Link to={`/books/delete/${book._id}`}>
                       <MdOutlineDelete className='text-red-500 text-2xl'/>
                     </Link>
                   </div>

@@ -9,6 +9,7 @@ const app=express()
 //middleWare for getting data from body and to modify
 app.use(express.json())
 //mIddleware for handling CORS policy
+app.use(cors())
 // app.use(cors({
 //     origin:"http://localhost:3000/",
 //     methods:['GET','POST','PUT','DELTE'],

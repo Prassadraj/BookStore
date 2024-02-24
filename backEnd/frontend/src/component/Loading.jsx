@@ -2,7 +2,9 @@ import React from 'react'
 
 const Loading = () => {
   return (
-    <div className='animate-ping w-10 h-10 flex justify-center rounded-full bg-red-500'></div>
+<div className='flex justify-center items-center'>
+<div className='animate-spin bg-green-400 rounded-full w-10 h-10'></div>
+</div>
   )
 }
 
