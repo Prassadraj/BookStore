@@ -1,11 +1,15 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App.jsx'
-import './index.css'
-import { BrowserRouter } from 'react-router-dom'
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App.jsx";
+import "./index.css";
+import { BrowserRouter } from "react-router-dom";
+import { SnackbarProvider } from "notistack";
 
 ReactDOM.render(
   <BrowserRouter>
-  <App/>
-  </BrowserRouter>
-,document.getElementById('root'))
+    <SnackbarProvider>
+      <App />
+    </SnackbarProvider>
+  </BrowserRouter>,
+  document.getElementById("root")
+);

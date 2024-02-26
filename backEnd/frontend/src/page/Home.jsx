@@ -29,7 +29,7 @@ const Home = () => {
 console.log(books);
   return (
     
-    <div className='p-4'>
+    <div className='p-4 '>
       <div className='flex justify-center items-center gap-4 p-8'>
         <button onClick={()=>setshowtype("booktable")}
         className='text- bg-yellow-200 border-gray border-2 hover:bg-yellow-300 py-1 px-3 rounded-lg'>
@@ -41,7 +41,7 @@ console.log(books);
         </button>
       </div>
       <div className='flex justify-between items-center'>
-        <h1 className='text-3xl mx-5 my-5'>Book List</h1>
+        <h1 className='text-3x`l mx-5 my-5'>Book List</h1>
         <Link to={'/books/create'}>
           <MdOutlineAddBox title='Create' className='bg-green-300 text-4xl'/>
         </Link>
