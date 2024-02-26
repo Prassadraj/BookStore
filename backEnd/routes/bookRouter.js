@@ -71,11 +71,11 @@ router.put('/:id',async(req,res)=>{
    //Delete the Books
    router.delete('/:id',async(req,res)=>{
     try{
-        if(!req.body.title||
-            !req.body.author||
-            !req.body.publishYear ){
-                return res.send({message:"send all required field"}).status(500)
-        }
+        // if(!req.body.title||
+        //     !req.body.author||
+        //     !req.body.publishYear ){
+        //         return res.send({message:"send all required field"}).status(500)
+        // }
         const{id}=req.params
         const deleteBook=await Bookmodel.findByIdAndDelete(id)
         if(!deleteBook){
