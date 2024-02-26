@@ -5,10 +5,13 @@ import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
+import Booktable from '../home/Booktable';
+import BookCard from '../home/BookCard';
 
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [spinner, setSpinner] = useState(false);
+  const [showtype,setshowtype]=useState("")
 
   useEffect(() => {
     setSpinner(true);
@@ -25,51 +28,27 @@ const Home = () => {
   }, []);
 console.log(books);
   return (
+    
     <div className='p-4'>
+      <div className='flex justify-center items-center gap-4 p-8'>
+        <button onClick={()=>setshowtype("booktable")}
+        className='text- bg-yellow-200 border-gray border-2 hover:bg-yellow-300 py-1 px-3 rounded-lg'>
+          Table
+        </button>
+        <button onClick={()=>setshowtype("bookcard")}
+        className='text- bg-yellow-200 border-gray border-2 hover:bg-yellow-300 py-1 px-3 rounded-lg'>
+          Bookcard
+        </button>
+      </div>
       <div className='flex justify-between items-center'>
-        <h1 className='text-3xl my-5'>Book List</h1>
+        <h1 className='text-3xl mx-5 my-5'>Book List</h1>
         <Link to={'/books/create'}>
           <MdOutlineAddBox title='Create' className='bg-green-300 text-4xl'/>
         </Link>
       </div>
-      {spinner ? (
+      {spinner ? 
         <Loading />
-      ) : (
-        <table className="w-full border-separate border-spacing-2">
-          <thead>
-            <tr className="text-black border border-slate-500 rounded-md">
-              <th>No</th>
-              <th>Title</th>
-              <th className="max-md:hidden">Author</th>
-              <th className="max-md:hidden">PublishYear</th>
-              <th className="max-md:hidden">Modify</th>
-            </tr>
-          </thead>
-          <tbody>
-            {books.map((book, index) => (
-              <tr key={book._id} className="h-8">
-                <td className="text-amber-700 border rounded-md text-center">{index + 1}</td>
-                <td className="border rounded-md text-center text-amber-700">{book.title}</td>
-                <td className="border rounded-md text-center text-amber-700">{book.author}</td>
-                <td className="border rounded-md text-center text-amber-700">{book.publishYear}</td>
-                <td>
-                  <div className="flex justify-center gap-4">
-                    <Link to={`/books/show/${book._id}`}>
-                      <BsInfoCircle title='info' className='text-green-500 text-2xl'/>
-                    </Link>
-                    <Link  to={`/books/edit/${book._id}`}>
-                      <AiOutlineEdit title='Edit' className='text-yellow-500 text-2xl'/>
-                    </Link>
-                    <Link to={`/books/delete/${book._id}`}>
-                      <MdOutlineDelete title='delete' className='text-red-500 text-2xl'/>
-                    </Link>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      : showtype=="bookcard" ? (<BookCard books={books}/>):(<Booktable books={books}/>)}
     </div>
   );
 }
