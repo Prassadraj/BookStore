@@ -41,8 +41,8 @@ console.log(books);
         </button>
       </div>
       <div className='flex justify-between items-center'>
-        <h1 className='text-3x`l mx-5 my-5'>Book List</h1>
-        <span className='text-2xl font-bold text-gray-500 absolute top-26'>Create Your Book</span>
+        <h1 className='text-3x`l mx-5 my-5'></h1>
+        <span className='text-2xl font-bold text-gray-500 absolute top-24 right-48'>Create Your Book</span>
         <Link to={'/books/create'}>
           <MdOutlineAddBox title='Create' className='text-gray-600 absolute right-36 top-24 text-4xl'/>
         </Link>
