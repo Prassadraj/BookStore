@@ -8,22 +8,22 @@ const Booktable = ({books}) => {
     <div><table className="w-full border-separate border-spacing-2 ">
     <thead >
       <tr className="text-black border  border-slate-500 rounded-md">
-        <th className=''>No</th>
-        <th>Title</th>
-        <th className="max-md:hidden ">Author</th>
-        <th className="max-md:hidden">PublishYear</th>
-        <th className="max-md:hidden">Modify</th>
+        <th className='border'>No</th>
+        <th className='border-2'>Title</th>
+        <th className="max-md:hidden border-2">Author</th>
+        <th className="max-md:hidden border-2">PublishYear</th>
+        <th className="max-md:hidden border-2">Modify</th>
       </tr>
     </thead>
     <tbody>
       {books.map((book, index) => (
-        <tr key={book._id} className="h-8 hover:bg-amber-200">
+        <tr key={book._id} className="h-8 hover:bg-gray-100 ">
           <td className="text-amber-700  border rounded-md text-center ">{index + 1}</td>
           <td className="border rounded-md text-center text-amber-700">{book.title}</td>
           <td className="border rounded-md text-center text-amber-700">{book.author}</td>
           <td className="border rounded-md text-center text-amber-700">{book.publishYear}</td>
           <td>
-            <div className="flex justify-center border-2 ite   gap-4">
+            <div className="flex justify-center border-2   gap-4">
               <Link to={`/books/show/${book._id}`}>
                 <BsInfoCircle title='info' className='text-green-500 text-2xl'/>
               </Link>
