@@ -22,7 +22,7 @@ app.use('/books',bookRouter)
 
 mongoose.connect(MongoURL).then(()=>{
     console.log("MongoDB connected")
-    app.listen(PORT,()=>{
+    app.listen(PORT||5000,()=>{
         console.log(`Port is running ${PORT}`);
     })
 })
