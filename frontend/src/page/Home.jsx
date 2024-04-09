@@ -15,7 +15,7 @@ const Home = () => {
 
   useEffect(() => {
     setSpinner(true);
-    axios.get('http://localhost:5555/books')
+    axios.get(`${import.meta.env.VITE_BASE_URL}/books`)
       .then((res) => {
         setSpinner(true)
         setBooks(res.data.data);

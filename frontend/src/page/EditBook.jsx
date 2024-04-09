@@ -36,7 +36,8 @@ const EditBook = () => {
       publishYear
     }
     setSpinner(true);
-    axios.put(`http://localhost:5555/books/${id}`,data)
+    axios.put(`${import.meta.env.VITE_BASE_URL}/books/${id}`,data)
+    
     .then((res)=>{
       setSpinner(false)
       navigate('/')

@@ -12,7 +12,8 @@ const DeleteBook = () => {
   const {id}=useParams()
   const handlerDeleteButton = () => {
     setSpinner(true);
-    axios.delete(`http://localhost:5555/books/${id}`)
+    axios.delete(`${import.meta.env.VITE_BASE_URL}/books/${id}`)
+    
       .then(() => {
         setSpinner(false);
         navigate('/');

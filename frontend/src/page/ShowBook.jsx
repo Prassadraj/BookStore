@@ -11,7 +11,7 @@ const ShowBook = () => {
 
   useEffect(()=>{
     setSpinner(true);
-    axios.get(`http://localhost:5555/books/${id}`).then((res)=>{
+    axios.get(`${import.meta.env.VITE_BASE_URL}/books/${id}`).then((res)=>{
       setbooks(res.data)
       setSpinner(false)
     }).catch((err)=>{
