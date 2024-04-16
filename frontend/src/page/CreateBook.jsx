@@ -1,84 +1,125 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Loading from '../component/Loading';
-import { useNavigate } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
-
+import React, { useState } from "react";
+import axios from "axios";
+import Loading from "../component/Loading";
+import { useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
 
 const CreateBook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publishYear, setPublishYear] = useState("");
+  const [description, setDescription] = useState("");
   const [spinner, setSpinner] = useState(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
   // Load environment variables
 
-
   const handleSaveBook = () => {
     const data = {
       title,
       author,
-      publishYear
+      publishYear,
+      description,
     };
 
     setSpinner(true);
 
-    axios.post(`${import.meta.env.VITE_BASE_URL}/books`, data)
+    axios
+      .post(`${import.meta.env.VITE_BASE_URL}/books`, data)
       .then((res) => {
         setSpinner(false);
-        enqueueSnackbar("Book created successfully", { variant: 'success' });
-        navigate('/');
+        enqueueSnackbar("Book created successfully", { variant: "success" });
+        navigate("/");
       })
       .catch((err) => {
         setSpinner(false);
-        enqueueSnackbar("Error creating book", { variant: 'error' });
+        enqueueSnackbar("Error creating book", { variant: "error" });
         console.error(err);
       });
   };
 
   return (
-    <div>
-      <h1 className='text-gray-400 my-4'>Create Book</h1>
-      {spinner ? <Loading /> :
-        <div className='flex flex-col border-2 border-gray-400 rounded-xl w-[600px] p-4 mx-auto'>
-          <div className='my-4'>
-            <label htmlFor="title" className='text-xl font-medium mr-4 text-sky-500'>Title:</label>
-            <input
-              type="text"
-              className='border-2 w-full px-4 py-1 rounded-xl'
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
-          <div className='my-4'>
-            <label htmlFor="author" className='text-xl font-medium text-sky-500'>Author:</label>
-            <input
-              type="text"
-              className='border-2 w-full px-4 py-1 rounded-xl'
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-            />
-          </div>
-          <div className='my-4'>
-            <label htmlFor="publishYear" className='text-xl font-medium text-sky-500'>Publish Year:</label>
-            <input
-              type="number"
-              className='border-2 w-full px-4 py-1 rounded-xl'
-              value={publishYear}
-              onChange={(e) => setPublishYear(e.target.value)}
-            />
-          </div>
-          <button
-            className='btn py-2 m-8 bg-red-500'
-            onClick={handleSaveBook}
+<div className="" style={{ background: "#343a40" }}>
+  {spinner ? (
+    <Loading />
+  ) : (
+    <div className="flex justify-center items-center h-screen">
+      <div
+        style={{ background: "#42494e" }}
+        className="flex flex-col border border-gray-700 shadow-md rounded-lg w-[600px] h-[750px] p-4 mx-auto"
+      >
+        <div className="my-2">
+          <h1
+            className=" text-2xl my-4 flex justify-center"
+            style={{ color: "#f2f2f2" }}
           >
-            Save
-          </button>
+            Add Book
+          </h1>
+          <label htmlFor="title" className="text-xl font-medium mr-4 text-gray-300">
+            Title:
+          </label>
+          <input
+            type="text"
+            className="border border-tan-400  w-full px-4 py-1 rounded-md bg-transparent text-gray-300"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </div>
-      }
+        <div className="my-4">
+          <label htmlFor="author" className="text-xl font-medium text-gray-300">
+            Author:
+          </label>
+          <input
+            type="text"
+            className="border border-tan-400   w-full px-4 py-1 rounded-md bg-transparent text-gray-300"
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="publishYear" className="text-xl font-medium text-gray-300">
+            Publish Year:
+          </label>
+          <input
+            type="number"
+            className="border border-tan-400  w-full px-4 py-1 rounded-md bg-transparent text-gray-300"
+            value={publishYear}
+            onChange={(e) => setPublishYear(e.target.value)}
+          />
+        </div>
+        <div className="my-4">
+          <label htmlFor="description" className="text-xl font-medium text-gray-300">
+            Narrate the story
+          </label>
+          <br />
+          <textarea
+            className="w-full p-5 border rounded-md border-tan-400 bg-transparent text-gray-300"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            name=""
+            placeholder=""
+            id=""
+            cols="30"
+            rows="8"
+          ></textarea>
+        </div>
+        <button
+          style={{ background: "#2f80ed", color: "#f2f2f2" }}
+          className="btn py-2 m-8 text-center rounded-md"
+          onClick={handleSaveBook}
+        >
+          Save
+        </button>
+      </div>
     </div>
+  )}
+</div>
+
+
+
+
+
   );
 };
 
