@@ -7,7 +7,7 @@ Page Turner is a book management application that allows users to organize and m
 - **Add Books**: Users can easily add books to their collection by providing details such as title, author, year of publish, and story description.
 - **Two UI Options**: Page Turner offers two user interface options - a table view and a book card view, providing flexibility in viewing and managing books.
 - **Edit and Delete Books**: Users can edit book details and delete books from their collection in both views.
-- **Detailed Book Information**: The card view provides an additional option to access detailed book information,including the story description.
+- **Detailed Book Information**: The card view provides an additional option to access detailed book information, including the story description.
 
 ## Installation
 
