@@ -16,7 +16,7 @@ To run Page Turner locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-    https://github.com/Prassadraj/BookStore.git
+   https://github.com/Prassadraj/PageTurner.git
 2. Navigate to the project directory:
    ```bash
     cd frontend
